@@ -1,0 +1,124 @@
+{
+  "template": "ks_corp_articles.pdf",
+  "state": "KS",
+  "entity_type": "CORP",
+  "fields": [
+    {
+      "field_id": "entity_name",
+      "page": 4,
+      "bbox": [
+        171,
+        262,
+        570,
+        290
+      ],
+      "font_size": 11,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_name",
+      "page": 4,
+      "bbox": [
+        171,
+        340,
+        570,
+        365
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_street",
+      "page": 4,
+      "bbox": [
+        171,
+        382,
+        570,
+        404
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_city",
+      "page": 4,
+      "bbox": [
+        171,
+        416,
+        375,
+        430
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_zip",
+      "page": 4,
+      "bbox": [
+        433,
+        416,
+        570,
+        430
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "business_purpose",
+      "page": 4,
+      "bbox": [
+        171,
+        476,
+        570,
+        540
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": true
+    },
+    {
+      "field_id": "authorized_shares",
+      "page": 5,
+      "bbox": [
+        172,
+        40,
+        320,
+        55
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_name",
+      "page": 5,
+      "bbox": [
+        172,
+        174,
+        570,
+        194
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_address",
+      "page": 5,
+      "bbox": [
+        172,
+        206,
+        570,
+        226
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    }
+  ]
+}
