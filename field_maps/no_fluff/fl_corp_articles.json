@@ -1,0 +1,202 @@
+{
+  "template": "fl_corp_articles.pdf",
+  "state": "FL",
+  "entity_type": "CORP",
+  "fields": [
+    {
+      "field_id": "entity_name",
+      "page": 0,
+      "bbox": [
+        260,
+        65,
+        560,
+        78
+      ],
+      "font_size": 10,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_street",
+      "page": 0,
+      "bbox": [
+        130,
+        114,
+        370,
+        128
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_city",
+      "page": 0,
+      "bbox": [
+        130,
+        130,
+        260,
+        144
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_state",
+      "page": 0,
+      "bbox": [
+        270,
+        130,
+        310,
+        144
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_zip",
+      "page": 0,
+      "bbox": [
+        320,
+        130,
+        370,
+        144
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "business_purpose",
+      "page": 0,
+      "bbox": [
+        58,
+        190,
+        560,
+        336
+      ],
+      "font_size": 10,
+      "font_family": "variable",
+      "multiline": true
+    },
+    {
+      "field_id": "authorized_shares",
+      "page": 0,
+      "bbox": [
+        340,
+        359,
+        560,
+        373
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_name",
+      "page": 1,
+      "bbox": [
+        140,
+        182,
+        500,
+        196
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_street",
+      "page": 1,
+      "bbox": [
+        140,
+        205,
+        500,
+        219
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_city",
+      "page": 1,
+      "bbox": [
+        140,
+        222,
+        300,
+        236
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_state",
+      "page": 1,
+      "bbox": [
+        310,
+        222,
+        360,
+        236
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_zip",
+      "page": 1,
+      "bbox": [
+        370,
+        222,
+        440,
+        236
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_name",
+      "page": 1,
+      "bbox": [
+        148,
+        306,
+        500,
+        320
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_address",
+      "page": 1,
+      "bbox": [
+        155,
+        329,
+        500,
+        343
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "formation_date",
+      "page": 1,
+      "bbox": [
+        248,
+        398,
+        378,
+        412
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    }
+  ]
+}

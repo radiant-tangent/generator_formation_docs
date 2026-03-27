@@ -6,7 +6,12 @@
     {
       "field_id": "entity_name",
       "page": 1,
-      "bbox": [90, 264, 530, 278],
+      "bbox": [
+        90,
+        264,
+        530,
+        278
+      ],
       "font_size": 11,
       "font_family": "variable",
       "multiline": false
@@ -14,7 +19,12 @@
     {
       "field_id": "principal_office_city",
       "page": 1,
-      "bbox": [112, 388, 530, 401],
+      "bbox": [
+        112,
+        388,
+        530,
+        401
+      ],
       "font_size": 10,
       "font_family": "variable",
       "multiline": false
@@ -22,7 +32,12 @@
     {
       "field_id": "registered_agent_street",
       "page": 1,
-      "bbox": [124, 508, 520, 522],
+      "bbox": [
+        124,
+        508,
+        520,
+        522
+      ],
       "font_size": 9,
       "font_family": "variable",
       "multiline": false
@@ -30,7 +45,12 @@
     {
       "field_id": "registered_agent_city",
       "page": 1,
-      "bbox": [124, 524, 300, 537],
+      "bbox": [
+        124,
+        535,
+        300,
+        548
+      ],
       "font_size": 9,
       "font_family": "variable",
       "multiline": false
@@ -38,7 +58,12 @@
     {
       "field_id": "registered_agent_state",
       "page": 1,
-      "bbox": [310, 524, 370, 537],
+      "bbox": [
+        310,
+        535,
+        370,
+        548
+      ],
       "font_size": 9,
       "font_family": "variable",
       "multiline": false
@@ -46,7 +71,12 @@
     {
       "field_id": "registered_agent_zip",
       "page": 1,
-      "bbox": [380, 524, 460, 537],
+      "bbox": [
+        380,
+        535,
+        460,
+        548
+      ],
       "font_size": 9,
       "font_family": "variable",
       "multiline": false
@@ -54,7 +84,12 @@
     {
       "field_id": "incorporator_name",
       "page": 1,
-      "bbox": [30, 656, 270, 670],
+      "bbox": [
+        30,
+        656,
+        270,
+        670
+      ],
       "font_size": 9,
       "font_family": "variable",
       "multiline": false
@@ -62,7 +97,12 @@
     {
       "field_id": "incorporator_address",
       "page": 1,
-      "bbox": [93, 696, 530, 708],
+      "bbox": [
+        93,
+        696,
+        530,
+        708
+      ],
       "font_size": 9,
       "font_family": "variable",
       "multiline": false
@@ -70,7 +110,12 @@
     {
       "field_id": "registered_agent_name",
       "page": 2,
-      "bbox": [93, 170, 460, 182],
+      "bbox": [
+        93,
+        170,
+        460,
+        182
+      ],
       "font_size": 9,
       "font_family": "variable",
       "multiline": false
@@ -78,7 +123,12 @@
     {
       "field_id": "principal_office_street",
       "page": 2,
-      "bbox": [93, 232, 460, 243],
+      "bbox": [
+        93,
+        232,
+        460,
+        243
+      ],
       "font_size": 9,
       "font_family": "variable",
       "multiline": false
@@ -86,7 +136,12 @@
     {
       "field_id": "principal_office_zip",
       "page": 2,
-      "bbox": [93, 262, 460, 273],
+      "bbox": [
+        93,
+        262,
+        460,
+        273
+      ],
       "font_size": 9,
       "font_family": "variable",
       "multiline": false

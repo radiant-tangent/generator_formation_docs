@@ -1,0 +1,163 @@
+{
+  "template": "tx_llc_certificate.pdf",
+  "state": "TX",
+  "entity_type": "LLC",
+  "fields": [
+    {
+      "field_id": "entity_name",
+      "page": 0,
+      "bbox": [
+        59,
+        242,
+        515,
+        260
+      ],
+      "font_size": 11,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_name",
+      "page": 0,
+      "bbox": [
+        59,
+        383,
+        490,
+        400
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_street",
+      "page": 0,
+      "bbox": [
+        59,
+        434,
+        240,
+        454
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_city",
+      "page": 0,
+      "bbox": [
+        253,
+        434,
+        420,
+        454
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_zip",
+      "page": 0,
+      "bbox": [
+        469,
+        434,
+        540,
+        454
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_street",
+      "page": 1,
+      "bbox": [
+        59,
+        505,
+        260,
+        520
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_city",
+      "page": 1,
+      "bbox": [
+        269,
+        505,
+        396,
+        520
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_state",
+      "page": 1,
+      "bbox": [
+        404,
+        505,
+        435,
+        520
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_zip",
+      "page": 1,
+      "bbox": [
+        440,
+        505,
+        480,
+        520
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_name",
+      "page": 2,
+      "bbox": [
+        59,
+        92,
+        515,
+        114
+      ],
+      "font_size": 10,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_address",
+      "page": 2,
+      "bbox": [
+        59,
+        130,
+        320,
+        154
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "formation_date",
+      "page": 2,
+      "bbox": [
+        90,
+        504,
+        250,
+        520
+      ],
+      "font_size": 10,
+      "font_family": "variable",
+      "multiline": false
+    }
+  ]
+}

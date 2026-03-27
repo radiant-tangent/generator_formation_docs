@@ -47,3 +47,31 @@ def render_pdf_to_images(
 
     doc.close()
     return image_paths
+
+
+def images_to_pdf(image_paths: list[str], output_path: str) -> str:
+    """Combine a list of PNG images into a single PDF.
+
+    Each image becomes one page sized to match the image dimensions.
+
+    Args:
+        image_paths: Ordered list of PNG image paths (one per page).
+        output_path: Path to write the output PDF.
+
+    Returns:
+        Path to the created PDF.
+    """
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    doc = fitz.open()
+
+    for img_path in image_paths:
+        img = fitz.open(img_path)
+        pdfbytes = img.convert_to_pdf()
+        img.close()
+        img_pdf = fitz.open("pdf", pdfbytes)
+        doc.insert_pdf(img_pdf)
+        img_pdf.close()
+
+    doc.save(output_path)
+    doc.close()
+    return output_path

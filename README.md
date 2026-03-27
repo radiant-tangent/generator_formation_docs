@@ -66,11 +66,12 @@ python generate.py [OPTIONS]
 
 | Option            | Default                              | Description                            |
 |-------------------|--------------------------------------|----------------------------------------|
-| `--count`         | 50                                   | Total documents to generate            |
+| `--count`         | 50                                   | Documents to generate per state        |
 | `--seed`          | 42                                   | Random seed for reproducibility        |
 | `--states`        | MA,NY,DE,TX,FL,MO,KS                | Comma-separated state codes            |
-| `--augmentations` | clean,slight_scan,moderate_scan      | Comma-separated augmentation profiles  |
+| `--augmentations` | slight_scan,moderate_scan            | Comma-separated augmentation profiles  |
 | `--output-dir`    | ./output                             | Output directory                       |
+| `--template-set`  | no_fluff                             | Template set: `no_fluff` or `full`     |
 | `--inspect`       |                                      | Run template inspector on a PDF        |
 
 **Examples:**
@@ -80,7 +81,7 @@ python generate.py [OPTIONS]
 python generate.py
 
 # Generate 10 docs for MA and NY only, with all augmentations
-python generate.py --count 10 --states MA,NY --augmentations clean,slight_scan,moderate_scan,heavy_scan,fax
+python generate.py --count 10 --states MA,NY --augmentations slight_scan,moderate_scan,heavy_scan,fax
 
 # Reproducible run with a specific seed
 python generate.py --count 100 --seed 123
@@ -110,7 +111,7 @@ formation_doc_generator/
 ├── field_maps/           # Per-template field coordinate configs (JSON)
 ├── fonts/                # TTF font files for text injection
 ├── output/
-│   ├── pdfs/             # Filled PDFs
+│   ├── pdfs/             # Base filled PDFs + augmented PDFs per profile
 │   ├── images/           # PNG renders (base + augmented)
 │   └── ground_truth/     # JSON ground-truth sidecar files
 ├── generator/
@@ -193,13 +194,34 @@ against the ground truth, ensuring the extracted values land in the correct CRM 
 
 ## Augmentation Profiles
 
-| Profile        | Rotation | Noise | Blur | JPEG Quality | Contrast |
-|----------------|----------|-------|------|--------------|----------|
-| clean          | —        | —     | —    | —            | —        |
-| slight_scan    | ±1.5°    | σ=3   | —    | —            | —        |
-| moderate_scan  | ±3°      | σ=8   | k=3  | —            | —        |
-| heavy_scan     | ±4°      | σ=15  | k=5  | 65           | —        |
-| fax            | ±1°      | σ=20  | k=1  | 55           | 1.3×     |
+Each augmentation profile applies a combination of page-level transforms to
+simulate real-world scan, fax, and copy artifacts. Every document produces a
+base PDF (filled, no augmentation) plus one augmented PDF and image set per
+requested profile.
+
+| Profile        | Rotation | Noise | Blur | JPEG | Contrast | Perspective | Shadow | Tint | Brightness | Margin | Speckle | Vignette |
+|----------------|----------|-------|------|------|----------|-------------|--------|------|------------|--------|---------|----------|
+| slight_scan    | ±1.5°    | σ=3   | —    | —    | —        | —           | —      | 2-6% | ±10        | ±8 px  | —       | —        |
+| moderate_scan  | ±3°      | σ=8   | k=1  | —    | —        | 0.2-0.6%    | 15-30  | 3-8% | ±15        | ±15 px | 0.05%   | —        |
+| heavy_scan     | ±4°      | σ=15  | k=5  | 65   | —        | 0.5-1.2%    | 25-50  | 5-12%| ±25        | ±20 px | 0.2%    | 30-60%   |
+| fax            | ±1°      | σ=20  | k=1  | 55   | 1.3×     | 0.2-0.5%    | 10-25  | 6-15%| ±20        | —      | 0.3%    | 20-50%   |
+
+**Effect descriptions:**
+
+| Effect      | Simulates                                           |
+|-------------|-----------------------------------------------------|
+| Rotation    | Page skew from scanner placement                    |
+| Noise       | Sensor noise from scanning hardware                 |
+| Blur        | Focus degradation from scan/fax                     |
+| JPEG        | Compression artifacts from digital transmission     |
+| Contrast    | Over-exposed copies or fax contrast boost           |
+| Perspective | Page not lying flat on scanner glass                |
+| Shadow      | Dark edge shadows from flatbed scanner lid          |
+| Tint        | Aged or off-white paper color                       |
+| Brightness  | Variable scanner exposure across documents          |
+| Margin      | Page placement offset on scanner glass              |
+| Speckle     | Dust and dirt (salt-and-pepper noise)               |
+| Vignette    | Light falloff toward corners from scanner optics    |
 
 ## Reproducibility
 

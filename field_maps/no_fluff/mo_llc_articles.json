@@ -1,0 +1,163 @@
+{
+  "template": "mo_llc_articles.pdf",
+  "state": "MO",
+  "entity_type": "LLC",
+  "fields": [
+    {
+      "field_id": "entity_name",
+      "page": 0,
+      "bbox": [
+        37,
+        158,
+        570,
+        172
+      ],
+      "font_size": 11,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "business_purpose",
+      "page": 0,
+      "bbox": [
+        37,
+        213,
+        570,
+        237
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": true
+    },
+    {
+      "field_id": "registered_agent_name",
+      "page": 0,
+      "bbox": [
+        91,
+        258,
+        187,
+        270
+      ],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_street",
+      "page": 0,
+      "bbox": [
+        193,
+        258,
+        475,
+        270
+      ],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_city",
+      "page": 0,
+      "bbox": [
+        481,
+        258,
+        570,
+        270
+      ],
+      "font_size": 7,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_name",
+      "page": 0,
+      "bbox": [
+        37,
+        425,
+        300,
+        440
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_address",
+      "page": 0,
+      "bbox": [
+        37,
+        443,
+        570,
+        458
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_street",
+      "page": 1,
+      "bbox": [
+        174,
+        57,
+        570,
+        67
+      ],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_city",
+      "page": 1,
+      "bbox": [
+        174,
+        80,
+        350,
+        92
+      ],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_state",
+      "page": 1,
+      "bbox": [
+        360,
+        80,
+        410,
+        92
+      ],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_zip",
+      "page": 1,
+      "bbox": [
+        420,
+        80,
+        500,
+        92
+      ],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "formation_date",
+      "page": 1,
+      "bbox": [
+        90,
+        126,
+        185,
+        140
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    }
+  ]
+}

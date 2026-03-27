@@ -44,16 +44,7 @@ def _rotation_morph(rect: fitz.Rect, rng: random.Random) -> tuple[fitz.Point, fi
 
 def _fill_style(rng: random.Random) -> dict:
     """Pick random fill style parameters to simulate different ink/printer weights."""
-    fill_opacity = rng.uniform(0.82, 1.0)
-
-    # ~20% chance of slightly heavier ink (fill+stroke)
-    if rng.random() < 0.20:
-        return {
-            "render_mode": 2,
-            "border_width": rng.uniform(0.08, 0.25),
-            "fill_opacity": fill_opacity,
-            "stroke_opacity": fill_opacity,
-        }
+    fill_opacity = rng.uniform(0.85, 1.0)
     return {"fill_opacity": fill_opacity}
 
 
@@ -149,6 +140,10 @@ def fill_pdf(
     # Decide per-document fill strategy: ~25% use typewriter mode
     use_typewriter = rng.random() < 0.25
 
+    # Pick one ink color and fill style for the whole document
+    doc_color = _near_black_color(rng)
+    doc_style = _fill_style(rng)
+
     for field_def in field_map["fields"]:
         field_id = field_def["field_id"]
         value = data_dict.get(field_id, "")
@@ -167,13 +162,11 @@ def fill_pdf(
         font_size = base_font_size + rng.uniform(-0.5, 0.5)
         font_size = max(6, font_size)  # Floor at 6pt
 
-        color = _near_black_color(rng)
+        color = doc_color
 
-        # Use variable font selection per field if configured
-        if field_def.get("font_family") == "variable":
-            field_font_path = _pick_font(fonts_dir, rng)
-        else:
-            field_font_path = font_path
+        # Use the document-level font; "variable" means it varies across
+        # documents, not across fields within the same document.
+        field_font_path = font_path
 
         field_font_name = os.path.splitext(os.path.basename(field_font_path))[0]
 
@@ -182,7 +175,7 @@ def fill_pdf(
 
         # Apply realism: positional jitter and fill style
         jittered = _jittered_rect(rect, rng)
-        style = _fill_style(rng)
+        style = doc_style
         morph = _rotation_morph(rect, rng)
 
         multiline = field_def.get("multiline", False)

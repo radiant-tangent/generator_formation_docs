@@ -12,7 +12,7 @@ from rich.table import Table
 from generator.field_map import load_all_field_maps, get_field_map_for_state
 from generator.faker_data import FormationDataGenerator, STATE_TEMPLATE_MAP
 from generator.pdf_filler import fill_pdf
-from generator.renderer import render_pdf_to_images
+from generator.renderer import render_pdf_to_images, images_to_pdf
 from generator.augmentor import augment_image, AUGMENTATION_PROFILES
 from generator.ground_truth import write_ground_truth
 
@@ -27,7 +27,7 @@ def parse_args():
     )
     parser.add_argument(
         "--count", type=int, default=50,
-        help="Total number of documents to generate (default: 50)",
+        help="Number of documents to generate per state (default: 50)",
     )
     parser.add_argument(
         "--seed", type=int, default=42,
@@ -38,12 +38,17 @@ def parse_args():
         help="Comma-separated state codes (default: MA,NY,DE,TX,FL,MO,KS)",
     )
     parser.add_argument(
-        "--augmentations", type=str, default="clean,slight_scan,moderate_scan",
-        help="Comma-separated augmentation profiles (default: clean,slight_scan,moderate_scan)",
+        "--augmentations", type=str, default="slight_scan,moderate_scan",
+        help="Comma-separated augmentation profiles (default: slight_scan,moderate_scan)",
     )
     parser.add_argument(
         "--output-dir", type=str, default="./output",
         help="Output directory (default: ./output)",
+    )
+    parser.add_argument(
+        "--template-set", type=str, default="no_fluff",
+        choices=["no_fluff", "full"],
+        help="Template set to use: 'no_fluff' (formation pages only) or 'full' (with instructions/cover pages). Default: no_fluff",
     )
     parser.add_argument(
         "--inspect", type=str, metavar="TEMPLATE",
@@ -59,15 +64,6 @@ def run_inspector(template_path: str):
     render_with_grid(template_path, output_dir)
     inspect_text_blocks(template_path)
 
-
-def distribute_counts(total: int, states: list[str]) -> dict[str, int]:
-    """Distribute total count evenly across states, handling remainders."""
-    base = total // len(states)
-    remainder = total % len(states)
-    counts = {}
-    for i, state in enumerate(states):
-        counts[state] = base + (1 if i < remainder else 0)
-    return counts
 
 
 def main():
@@ -100,8 +96,8 @@ def main():
             return 1
 
     # Set up paths
-    templates_dir = os.path.join(PROJECT_ROOT, "templates")
-    field_maps_dir = os.path.join(PROJECT_ROOT, "field_maps")
+    templates_dir = os.path.join(PROJECT_ROOT, "templates", args.template_set)
+    field_maps_dir = os.path.join(PROJECT_ROOT, "field_maps", args.template_set)
     fonts_dir = os.path.join(PROJECT_ROOT, "fonts")
     pdfs_dir = os.path.join(args.output_dir, "pdfs")
     images_dir = os.path.join(args.output_dir, "images")
@@ -136,17 +132,17 @@ def main():
     data_gen = FormationDataGenerator(seed=seed)
     np_rng = np.random.default_rng(seed + 1)
 
-    # Distribute document counts across states
-    state_counts = distribute_counts(args.count, states)
+    # Each state gets --count documents
+    state_counts = {state: args.count for state in states}
 
     # Tracking stats
     stats = {state: {"docs": 0, "images": 0, "gt_files": 0} for state in states}
-    total_docs = args.count
+    total_docs = args.count * len(states)
     total_images = 0
     total_gt = 0
 
     console.print(f"\n[bold]Formation Document Generator[/bold]")
-    console.print(f"  Documents: {args.count}")
+    console.print(f"  Documents: {args.count} per state ({total_docs} total)")
     console.print(f"  States: {', '.join(states)}")
     console.print(f"  Augmentations: {', '.join(aug_profiles)}")
     console.print(f"  Seed: {args.seed}")
@@ -191,8 +187,10 @@ def main():
                 # Render to images
                 base_images = render_pdf_to_images(pdf_path, images_dir, doc_data.doc_id)
 
-                # Apply augmentations
+                # Apply augmentations and assemble augmented PDFs
                 all_image_paths = []
+                # Collect augmented page paths grouped by profile
+                profile_pages: dict[str, list[str]] = {p: [] for p in aug_profiles}
                 for base_img in base_images:
                     page_stem = os.path.splitext(os.path.basename(base_img))[0]
                     for profile_name in aug_profiles:
@@ -200,6 +198,14 @@ def main():
                         aug_path = os.path.join(images_dir, aug_filename)
                         augment_image(base_img, aug_path, profile_name, np_rng)
                         all_image_paths.append(aug_path)
+                        profile_pages[profile_name].append(aug_path)
+
+                # Create one PDF per augmentation profile
+                for profile_name, pages in profile_pages.items():
+                    if pages:
+                        aug_pdf_name = f"{doc_data.doc_id}_{state}_{config['entity_type']}_{profile_name}.pdf"
+                        aug_pdf_path = os.path.join(pdfs_dir, aug_pdf_name)
+                        images_to_pdf(pages, aug_pdf_path)
 
                 total_images += len(all_image_paths)
 

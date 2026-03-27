@@ -1,0 +1,85 @@
+{
+  "template": "de_llc_certificate.pdf",
+  "state": "DE",
+  "entity_type": "LLC",
+  "fields": [
+    {
+      "field_id": "entity_name",
+      "page": 0,
+      "bbox": [
+        90,
+        211,
+        510,
+        225
+      ],
+      "font_size": 10,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_street",
+      "page": 0,
+      "bbox": [
+        150,
+        268,
+        475,
+        282
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_city",
+      "page": 0,
+      "bbox": [
+        165,
+        282,
+        320,
+        296
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_zip",
+      "page": 0,
+      "bbox": [
+        390,
+        282,
+        478,
+        296
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_name",
+      "page": 0,
+      "bbox": [
+        90,
+        324,
+        510,
+        338
+      ],
+      "font_size": 10,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_name",
+      "page": 0,
+      "bbox": [
+        310,
+        461,
+        510,
+        476
+      ],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    }
+  ]
+}
