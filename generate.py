@@ -34,8 +34,8 @@ def parse_args():
         help="Random seed for reproducibility (default: 42)",
     )
     parser.add_argument(
-        "--states", type=str, default="MA,NY,DE,TX,FL,MO,KS",
-        help="Comma-separated state codes (default: MA,NY,DE,TX,FL,MO,KS)",
+        "--states", type=str, default="MA_CORP,NY_CORP,NY_LLC,DE_LLC,TX_LLC,FL_CORP,MO_LLC,KS_CORP,CA_LLC",
+        help="Comma-separated state_entity keys, e.g. MA_CORP,NY_LLC,CA_LLC (default: all)",
     )
     parser.add_argument(
         "--augmentations", type=str, default="slight_scan,moderate_scan",
@@ -78,13 +78,13 @@ def main():
         return 0
 
     # Parse arguments
-    states = [s.strip().upper() for s in args.states.split(",")]
+    state_keys = [s.strip().upper() for s in args.states.split(",")]
     aug_profiles = [a.strip() for a in args.augmentations.split(",")]
 
-    # Validate states
-    for state in states:
-        if state not in STATE_TEMPLATE_MAP:
-            console.print(f"[red]Error:[/red] Unknown state: {state}")
+    # Validate state keys
+    for key in state_keys:
+        if key not in STATE_TEMPLATE_MAP:
+            console.print(f"[red]Error:[/red] Unknown state key: {key}")
             console.print(f"Available: {', '.join(STATE_TEMPLATE_MAP.keys())}")
             return 1
 
@@ -97,7 +97,7 @@ def main():
 
     # Set up paths
     templates_dir = os.path.join(PROJECT_ROOT, "templates", args.template_set)
-    field_maps_dir = os.path.join(PROJECT_ROOT, "field_maps", args.template_set)
+    field_maps_dir = os.path.join(PROJECT_ROOT, "field_maps", "formation_docs", args.template_set)
     fonts_dir = os.path.join(PROJECT_ROOT, "fonts")
     pdfs_dir = os.path.join(args.output_dir, "pdfs")
     images_dir = os.path.join(args.output_dir, "images")
@@ -132,18 +132,18 @@ def main():
     data_gen = FormationDataGenerator(seed=seed)
     np_rng = np.random.default_rng(seed + 1)
 
-    # Each state gets --count documents
-    state_counts = {state: args.count for state in states}
+    # Each state key gets --count documents
+    state_counts = {key: args.count for key in state_keys}
 
     # Tracking stats
-    stats = {state: {"docs": 0, "images": 0, "gt_files": 0} for state in states}
-    total_docs = args.count * len(states)
+    stats = {key: {"docs": 0, "images": 0, "gt_files": 0} for key in state_keys}
+    total_docs = args.count * len(state_keys)
     total_images = 0
     total_gt = 0
 
     console.print(f"\n[bold]Formation Document Generator[/bold]")
-    console.print(f"  Documents: {args.count} per state ({total_docs} total)")
-    console.print(f"  States: {', '.join(states)}")
+    console.print(f"  Documents: {args.count} per state/entity ({total_docs} total)")
+    console.print(f"  States: {', '.join(state_keys)}")
     console.print(f"  Augmentations: {', '.join(aug_profiles)}")
     console.print(f"  Seed: {args.seed}")
     console.print(f"  Output: {args.output_dir}\n")
@@ -158,26 +158,27 @@ def main():
     ) as progress:
         task = progress.add_task("Generating documents...", total=total_docs)
 
-        for state in states:
-            count = state_counts[state]
-            config = STATE_TEMPLATE_MAP[state]
+        for state_key in state_keys:
+            count = state_counts[state_key]
+            config = STATE_TEMPLATE_MAP[state_key]
+            state = config["state"]
             template_path = os.path.join(templates_dir, config["template"])
 
             if not os.path.isfile(template_path):
-                console.print(f"[yellow]Warning:[/yellow] Template not found: {template_path}, skipping {state}")
+                console.print(f"[yellow]Warning:[/yellow] Template not found: {template_path}, skipping {state_key}")
                 progress.advance(task, count)
                 continue
 
             try:
                 fm = get_field_map_for_state(field_maps, state, config["entity_type"])
             except Exception as e:
-                console.print(f"[yellow]Warning:[/yellow] {e}, skipping {state}")
+                console.print(f"[yellow]Warning:[/yellow] {e}, skipping {state_key}")
                 progress.advance(task, count)
                 continue
 
             for _i in range(count):
                 # Generate data
-                doc_data = data_gen.generate(state)
+                doc_data = data_gen.generate(state_key)
 
                 # Fill PDF
                 pdf_filename = f"{doc_data.doc_id}_{state}_{config['entity_type']}.pdf"
@@ -214,9 +215,9 @@ def main():
                 total_gt += 1
 
                 # Update stats
-                stats[state]["docs"] += 1
-                stats[state]["images"] += len(all_image_paths)
-                stats[state]["gt_files"] += 1
+                stats[state_key]["docs"] += 1
+                stats[state_key]["images"] += len(all_image_paths)
+                stats[state_key]["gt_files"] += 1
 
                 progress.advance(task)
 
@@ -224,14 +225,14 @@ def main():
     console.print("\n[bold green]Generation complete![/bold green]\n")
 
     table = Table(title="Summary")
-    table.add_column("State", style="cyan")
+    table.add_column("State/Entity", style="cyan")
     table.add_column("Documents", justify="right")
     table.add_column("Images", justify="right")
     table.add_column("Ground Truth", justify="right")
 
-    for state in states:
-        s = stats[state]
-        table.add_row(state, str(s["docs"]), str(s["images"]), str(s["gt_files"]))
+    for key in state_keys:
+        s = stats[key]
+        table.add_row(key, str(s["docs"]), str(s["images"]), str(s["gt_files"]))
 
     table.add_section()
     table.add_row(

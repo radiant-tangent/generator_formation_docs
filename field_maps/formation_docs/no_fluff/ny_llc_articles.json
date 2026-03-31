@@ -1,0 +1,63 @@
+{
+  "template": "ny_llc_articles.pdf",
+  "state": "NY",
+  "entity_type": "LLC",
+  "fields": [
+    {
+      "field_id": "entity_name",
+      "page": 0,
+      "bbox": [100, 343, 550, 358],
+      "font_size": 11,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_city",
+      "page": 0,
+      "bbox": [115, 393, 543, 407],
+      "font_size": 10,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_street",
+      "page": 0,
+      "bbox": [85, 496, 550, 510],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_city",
+      "page": 0,
+      "bbox": [85, 521, 350, 535],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_state",
+      "page": 0,
+      "bbox": [360, 521, 410, 535],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_zip",
+      "page": 0,
+      "bbox": [420, 521, 550, 535],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_name",
+      "page": 0,
+      "bbox": [330, 708, 555, 723],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    }
+  ]
+}

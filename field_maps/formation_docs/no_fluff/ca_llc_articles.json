@@ -1,0 +1,79 @@
+{
+  "template": "ca_llc_articles.pdf",
+  "state": "CA",
+  "entity_type": "LLC",
+  "fields": [
+    {
+      "field_id": "entity_name",
+      "page": 0,
+      "bbox": [32, 192, 575, 207],
+      "font_size": 10,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_street",
+      "page": 0,
+      "bbox": [32, 278, 390, 293],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_city",
+      "page": 0,
+      "bbox": [400, 278, 480, 293],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_zip",
+      "page": 0,
+      "bbox": [522, 278, 560, 293],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_name",
+      "page": 0,
+      "bbox": [46, 404, 560, 418],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_street",
+      "page": 0,
+      "bbox": [46, 435, 390, 449],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_city",
+      "page": 0,
+      "bbox": [400, 435, 480, 449],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "registered_agent_zip",
+      "page": 0,
+      "bbox": [522, 435, 560, 449],
+      "font_size": 8,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "incorporator_name",
+      "page": 0,
+      "bbox": [350, 690, 555, 706],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    }
+  ]
+}

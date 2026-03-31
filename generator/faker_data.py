@@ -84,17 +84,24 @@ STATE_CONFIG = {
                     "Lawrence", "Shawnee", "Manhattan", "Lenexa", "Salina"],
         "zip_prefix": ["660", "661", "662", "664", "665", "666", "667", "668", "669", "670", "671", "672", "673", "674", "675", "676", "677"],
     },
+    "CA": {
+        "cities": ["Los Angeles", "San Francisco", "San Diego", "Sacramento", "San Jose",
+                    "Oakland", "Fresno", "Long Beach", "Bakersfield", "Anaheim"],
+        "zip_prefix": ["900", "901", "902", "903", "904", "905", "906", "907", "908", "910", "911", "912", "913", "914", "915", "916", "917", "918", "919", "920", "921", "922", "923", "924", "925", "926", "927", "928", "930", "931", "932", "933", "934", "935", "936", "937", "938", "939", "940", "941", "942", "943", "944", "945", "946", "947", "948", "949", "950", "951", "952", "953", "954", "955", "956", "957", "958", "959", "960", "961"],
+    },
 }
 
-# Templates mapped to states
+# Templates mapped to state/entity-type composite keys
 STATE_TEMPLATE_MAP = {
-    "MA": {"entity_type": "CORP", "template": "ma_corp_articles.pdf"},
-    "NY": {"entity_type": "CORP", "template": "ny_corp_certificate.pdf"},
-    "DE": {"entity_type": "LLC", "template": "de_llc_certificate.pdf"},
-    "TX": {"entity_type": "LLC", "template": "tx_llc_certificate.pdf"},
-    "FL": {"entity_type": "CORP", "template": "fl_corp_articles.pdf"},
-    "MO": {"entity_type": "LLC", "template": "mo_llc_articles.pdf"},
-    "KS": {"entity_type": "CORP", "template": "ks_corp_articles.pdf"},
+    "MA_CORP": {"state": "MA", "entity_type": "CORP", "template": "ma_corp_articles.pdf"},
+    "NY_CORP": {"state": "NY", "entity_type": "CORP", "template": "ny_corp_certificate.pdf"},
+    "NY_LLC":  {"state": "NY", "entity_type": "LLC",  "template": "ny_llc_articles.pdf"},
+    "DE_LLC":  {"state": "DE", "entity_type": "LLC",  "template": "de_llc_certificate.pdf"},
+    "TX_LLC":  {"state": "TX", "entity_type": "LLC",  "template": "tx_llc_certificate.pdf"},
+    "FL_CORP": {"state": "FL", "entity_type": "CORP", "template": "fl_corp_articles.pdf"},
+    "MO_LLC":  {"state": "MO", "entity_type": "LLC",  "template": "mo_llc_articles.pdf"},
+    "KS_CORP": {"state": "KS", "entity_type": "CORP", "template": "ks_corp_articles.pdf"},
+    "CA_LLC":  {"state": "CA", "entity_type": "LLC",  "template": "ca_llc_articles.pdf"},
 }
 
 INDUSTRY_WORDS = [
@@ -190,16 +197,17 @@ class FormationDataGenerator:
         ])
         return f"{shares:,} shares, {par_type}"
 
-    def generate(self, state: str) -> FormationDocData:
-        """Generate a complete synthetic formation document record for a state.
+    def generate(self, state_key: str) -> FormationDocData:
+        """Generate a complete synthetic formation document record.
 
         Args:
-            state: Two-letter state code (MA, NY, DE, TX, FL).
+            state_key: Composite key like 'MA_CORP' or 'NY_LLC'.
 
         Returns:
             FormationDocData with all fields populated.
         """
-        config = STATE_TEMPLATE_MAP[state]
+        config = STATE_TEMPLATE_MAP[state_key]
+        state = config["state"]
         entity_type = config["entity_type"]
         template_name = config["template"]
 

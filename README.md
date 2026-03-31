@@ -16,11 +16,13 @@ webform fields.
 |---------------|-------------|----------------------------|--------------------------|
 | Massachusetts | Corp        | Articles of Organization   | ma_corp_articles.pdf     |
 | New York      | Corp        | Certificate of Incorporation | ny_corp_certificate.pdf |
+| New York      | LLC         | Articles of Organization   | ny_llc_articles.pdf      |
 | Delaware      | LLC         | Certificate of Formation   | de_llc_certificate.pdf   |
 | Texas         | LLC         | Certificate of Formation   | tx_llc_certificate.pdf   |
 | Florida       | Corp        | Articles of Incorporation  | fl_corp_articles.pdf     |
 | Missouri      | LLC         | Articles of Organization   | mo_llc_articles.pdf      |
 | Kansas        | Corp        | Articles of Incorporation  | ks_corp_articles.pdf     |
+| California    | LLC         | Articles of Organization   | ca_llc_articles.pdf      |
 
 ## Setup
 
@@ -66,9 +68,9 @@ python generate.py [OPTIONS]
 
 | Option            | Default                              | Description                            |
 |-------------------|--------------------------------------|----------------------------------------|
-| `--count`         | 50                                   | Documents to generate per state        |
+| `--count`         | 50                                   | Documents to generate per state/entity |
 | `--seed`          | 42                                   | Random seed for reproducibility        |
-| `--states`        | MA,NY,DE,TX,FL,MO,KS                | Comma-separated state codes            |
+| `--states`        | MA_CORP,NY_CORP,NY_LLC,DE_LLC,TX_LLC,FL_CORP,MO_LLC,KS_CORP,CA_LLC | Comma-separated state_entity keys |
 | `--augmentations` | slight_scan,moderate_scan            | Comma-separated augmentation profiles  |
 | `--output-dir`    | ./output                             | Output directory                       |
 | `--template-set`  | no_fluff                             | Template set: `no_fluff` or `full`     |
@@ -80,8 +82,8 @@ python generate.py [OPTIONS]
 # Generate 50 docs across all states (default)
 python generate.py
 
-# Generate 10 docs for MA and NY only, with all augmentations
-python generate.py --count 10 --states MA,NY --augmentations slight_scan,moderate_scan,heavy_scan,fax
+# Generate 10 docs for MA Corp and NY LLC only, with all augmentations
+python generate.py --count 10 --states MA_CORP,NY_LLC --augmentations slight_scan,moderate_scan,heavy_scan,fax
 
 # Reproducible run with a specific seed
 python generate.py --count 100 --seed 123
