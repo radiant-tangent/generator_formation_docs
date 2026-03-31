@@ -167,7 +167,7 @@ formation_doc_generator/
    }
    ```
 
-5. Add the state to `STATE_CONFIG` and `STATE_TEMPLATE_MAP` in `generator/faker_data.py`
+5. Add the state to `FORM_CONFIG` and `FORM_TEMPLATE_MAP` in `generator/faker_data.py`
 6. Run a test generation: `python generate.py --count 1 --states XX_CORP`
 
 ## Updating Field Coordinate Maps

@@ -10,7 +10,7 @@ from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeEl
 from rich.table import Table
 
 from generator.field_map import load_all_field_maps, get_field_map_for_state
-from generator.faker_data import FormationDataGenerator, STATE_TEMPLATE_MAP
+from generator.faker_data import FormationDataGenerator, FORM_TEMPLATE_MAP
 from generator.pdf_filler import fill_pdf
 from generator.renderer import render_pdf_to_images, images_to_pdf
 from generator.augmentor import augment_image, AUGMENTATION_PROFILES
@@ -83,9 +83,9 @@ def main():
 
     # Validate state keys
     for key in state_keys:
-        if key not in STATE_TEMPLATE_MAP:
+        if key not in FORM_TEMPLATE_MAP:
             console.print(f"[red]Error:[/red] Unknown state key: {key}")
-            console.print(f"Available: {', '.join(STATE_TEMPLATE_MAP.keys())}")
+            console.print(f"Available: {', '.join(FORM_TEMPLATE_MAP.keys())}")
             return 1
 
     # Validate augmentation profiles
@@ -95,17 +95,18 @@ def main():
             console.print(f"Available: {', '.join(AUGMENTATION_PROFILES.keys())}")
             return 1
 
-    # Set up paths
-    templates_dir = os.path.join(PROJECT_ROOT, "templates", "formation_docs", args.template_set)
-    field_maps_dir = os.path.join(PROJECT_ROOT, "field_maps", "formation_docs", args.template_set)
+    # Base paths per doc_type are resolved per state_key in the loop below
+    templates_base = os.path.join(PROJECT_ROOT, "templates")
+    field_maps_base = os.path.join(PROJECT_ROOT, "field_maps")
     fonts_dir = os.path.join(PROJECT_ROOT, "fonts")
     pdfs_dir = os.path.join(args.output_dir, "pdfs")
     images_dir = os.path.join(args.output_dir, "images")
     gt_dir = os.path.join(args.output_dir, "ground_truth")
 
-    # Verify prerequisites
-    if not os.path.isdir(templates_dir):
-        console.print(f"[red]Error:[/red] Templates directory not found: {templates_dir}")
+    # Verify prerequisites (check default formation_docs dir exists)
+    default_templates_dir = os.path.join(templates_base, "formation_docs", args.template_set)
+    if not os.path.isdir(default_templates_dir):
+        console.print(f"[red]Error:[/red] Templates directory not found: {default_templates_dir}")
         console.print("Place PDF templates in templates/ first.")
         return 1
 
@@ -116,12 +117,17 @@ def main():
         console.print("Run: python tools/download_fonts.py")
         return 1
 
-    # Load field maps
-    try:
-        field_maps = load_all_field_maps(field_maps_dir)
-    except Exception as e:
-        console.print(f"[red]Error loading field maps:[/red] {e}")
-        return 1
+    # Load field maps from all doc_type directories used by requested state_keys
+    field_maps = {}
+    doc_types_needed = {FORM_TEMPLATE_MAP[k]["doc_type"] for k in state_keys}
+    for doc_type in doc_types_needed:
+        fm_dir = os.path.join(field_maps_base, doc_type, args.template_set)
+        if os.path.isdir(fm_dir):
+            try:
+                field_maps.update(load_all_field_maps(fm_dir))
+            except Exception as e:
+                console.print(f"[red]Error loading field maps from {fm_dir}:[/red] {e}")
+                return 1
 
     # Create output directories
     for d in [pdfs_dir, images_dir, gt_dir]:
@@ -160,8 +166,9 @@ def main():
 
         for state_key in state_keys:
             count = state_counts[state_key]
-            config = STATE_TEMPLATE_MAP[state_key]
+            config = FORM_TEMPLATE_MAP[state_key]
             state = config["state"]
+            templates_dir = os.path.join(templates_base, config["doc_type"], args.template_set)
             template_path = os.path.join(templates_dir, config["template"])
 
             if not os.path.isfile(template_path):

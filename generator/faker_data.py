@@ -32,6 +32,68 @@ class FormationDocData:
     authorized_shares: str = ""  # Corps only
     business_purpose: str = ""
 
+    # Beneficial owner fields
+    opener_first_name: str = ""
+    opener_middle_name: str = ""
+    opener_last_name: str = ""
+    entity_country: str = ""
+    control_first_name: str = ""
+    control_middle_name: str = ""
+    control_last_name: str = ""
+    control_dob: str = ""
+    control_street: str = ""
+    control_city: str = ""
+    control_state: str = ""
+    control_postal_code: str = ""
+    control_country: str = ""
+    control_ssn: str = ""
+    owner1_pct: str = ""
+    owner1_first_name: str = ""
+    owner1_middle_name: str = ""
+    owner1_last_name: str = ""
+    owner1_dob: str = ""
+    owner1_street: str = ""
+    owner1_city: str = ""
+    owner1_state: str = ""
+    owner1_postal_code: str = ""
+    owner1_country: str = ""
+    owner1_ssn: str = ""
+    owner2_pct: str = ""
+    owner2_first_name: str = ""
+    owner2_middle_name: str = ""
+    owner2_last_name: str = ""
+    owner2_dob: str = ""
+    owner2_street: str = ""
+    owner2_city: str = ""
+    owner2_state: str = ""
+    owner2_postal_code: str = ""
+    owner2_country: str = ""
+    owner2_ssn: str = ""
+    owner3_pct: str = ""
+    owner3_first_name: str = ""
+    owner3_middle_name: str = ""
+    owner3_last_name: str = ""
+    owner3_dob: str = ""
+    owner3_street: str = ""
+    owner3_city: str = ""
+    owner3_state: str = ""
+    owner3_postal_code: str = ""
+    owner3_country: str = ""
+    owner3_ssn: str = ""
+    owner4_pct: str = ""
+    owner4_first_name: str = ""
+    owner4_middle_name: str = ""
+    owner4_last_name: str = ""
+    owner4_dob: str = ""
+    owner4_street: str = ""
+    owner4_city: str = ""
+    owner4_state: str = ""
+    owner4_postal_code: str = ""
+    owner4_country: str = ""
+    owner4_ssn: str = ""
+    cert_name: str = ""
+    cert_date: str = ""
+
     # Document metadata
     doc_id: str = ""
     template_name: str = ""
@@ -48,7 +110,7 @@ class FormationDocData:
 
 
 # State-specific locale data for realistic addresses
-STATE_CONFIG = {
+FORM_CONFIG = {
     "MA": {
         "cities": ["Boston", "Cambridge", "Worcester", "Springfield", "Lowell",
                     "Quincy", "Newton", "Somerville", "Brookline", "Salem"],
@@ -89,19 +151,25 @@ STATE_CONFIG = {
                     "Oakland", "Fresno", "Long Beach", "Bakersfield", "Anaheim"],
         "zip_prefix": ["900", "901", "902", "903", "904", "905", "906", "907", "908", "910", "911", "912", "913", "914", "915", "916", "917", "918", "919", "920", "921", "922", "923", "924", "925", "926", "927", "928", "930", "931", "932", "933", "934", "935", "936", "937", "938", "939", "940", "941", "942", "943", "944", "945", "946", "947", "948", "949", "950", "951", "952", "953", "954", "955", "956", "957", "958", "959", "960", "961"],
     },
+    "BO": {
+        "cities": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix",
+                    "Philadelphia", "San Antonio", "San Diego", "Dallas", "Austin"],
+        "zip_prefix": ["100", "200", "300", "600", "770", "850", "191", "782", "752", "787"],
+    },
 }
 
 # Templates mapped to state/entity-type composite keys
-STATE_TEMPLATE_MAP = {
-    "MA_CORP": {"state": "MA", "entity_type": "CORP", "template": "ma_corp_articles.pdf"},
-    "NY_CORP": {"state": "NY", "entity_type": "CORP", "template": "ny_corp_certificate.pdf"},
-    "NY_LLC":  {"state": "NY", "entity_type": "LLC",  "template": "ny_llc_articles.pdf"},
-    "DE_LLC":  {"state": "DE", "entity_type": "LLC",  "template": "de_llc_certificate.pdf"},
-    "TX_LLC":  {"state": "TX", "entity_type": "LLC",  "template": "tx_llc_certificate.pdf"},
-    "FL_CORP": {"state": "FL", "entity_type": "CORP", "template": "fl_corp_articles.pdf"},
-    "MO_LLC":  {"state": "MO", "entity_type": "LLC",  "template": "mo_llc_articles.pdf"},
-    "KS_CORP": {"state": "KS", "entity_type": "CORP", "template": "ks_corp_articles.pdf"},
-    "CA_LLC":  {"state": "CA", "entity_type": "LLC",  "template": "ca_llc_articles.pdf"},
+FORM_TEMPLATE_MAP = {
+    "MA_CORP": {"state": "MA", "entity_type": "CORP", "doc_type": "formation_docs", "template": "ma_corp_articles.pdf"},
+    "NY_CORP": {"state": "NY", "entity_type": "CORP", "doc_type": "formation_docs", "template": "ny_corp_certificate.pdf"},
+    "NY_LLC":  {"state": "NY", "entity_type": "LLC",  "doc_type": "formation_docs", "template": "ny_llc_articles.pdf"},
+    "DE_LLC":  {"state": "DE", "entity_type": "LLC",  "doc_type": "formation_docs", "template": "de_llc_certificate.pdf"},
+    "TX_LLC":  {"state": "TX", "entity_type": "LLC",  "doc_type": "formation_docs", "template": "tx_llc_certificate.pdf"},
+    "FL_CORP": {"state": "FL", "entity_type": "CORP", "doc_type": "formation_docs", "template": "fl_corp_articles.pdf"},
+    "MO_LLC":  {"state": "MO", "entity_type": "LLC",  "doc_type": "formation_docs", "template": "mo_llc_articles.pdf"},
+    "KS_CORP": {"state": "KS", "entity_type": "CORP", "doc_type": "formation_docs", "template": "ks_corp_articles.pdf"},
+    "CA_LLC":  {"state": "CA", "entity_type": "LLC",  "doc_type": "formation_docs", "template": "ca_llc_articles.pdf"},
+    "BO_FORM": {"state": "BO", "entity_type": "BENEFICIAL", "doc_type": "business_ownership_docs", "template": "Beneficial_Owners_596621.pdf"},
 }
 
 INDUSTRY_WORDS = [
@@ -169,7 +237,7 @@ class FormationDataGenerator:
 
     def _generate_state_address(self, state: str) -> tuple[str, str, str, str]:
         """Generate a realistic address for the given state."""
-        config = STATE_CONFIG[state]
+        config = FORM_CONFIG[state]
         street = self.fake.street_address().upper()
         city = self.rng.choice(config["cities"]).upper()
         zip_prefix = self.rng.choice(config["zip_prefix"])
@@ -197,19 +265,61 @@ class FormationDataGenerator:
         ])
         return f"{shares:,} shares, {par_type}"
 
+    def _generate_ssn(self) -> str:
+        """Generate a synthetic SSN (XXX-XX-XXXX)."""
+        area = self.rng.randint(100, 899)
+        group = self.rng.randint(1, 99)
+        serial = self.rng.randint(1, 9999)
+        return f"{area:03d}-{group:02d}-{serial:04d}"
+
+    def _generate_dob(self) -> str:
+        """Generate a date of birth in MM/DD/YYYY format (age 25-75)."""
+        date = self.fake.date_of_birth(minimum_age=25, maximum_age=75)
+        return date.strftime("%m/%d/%Y")
+
+    def _generate_person_name(self) -> tuple[str, str, str]:
+        """Generate first, middle, last name."""
+        first = self.fake.first_name().upper()
+        middle = self.rng.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        last = self.fake.last_name().upper()
+        return first, middle, last
+
+    def _generate_owner_pcts(self, num_owners: int) -> list[str]:
+        """Generate ownership percentages that sum to <= 100 with each >= 25."""
+        if num_owners == 0:
+            return []
+        if num_owners == 1:
+            pct = self.rng.randint(25, 100)
+            return [f"{pct}%"]
+        # Each owner has at least 25%, max total 100%
+        pcts = []
+        remaining = 100
+        for i in range(num_owners):
+            if i == num_owners - 1:
+                pct = max(25, remaining)
+            else:
+                max_pct = remaining - 25 * (num_owners - i - 1)
+                pct = self.rng.randint(25, min(max_pct, 50))
+            pcts.append(f"{pct}%")
+            remaining -= pct
+        return pcts
+
     def generate(self, state_key: str) -> FormationDocData:
         """Generate a complete synthetic formation document record.
 
         Args:
-            state_key: Composite key like 'MA_CORP' or 'NY_LLC'.
+            state_key: Composite key like 'MA_CORP' or 'BO'.
 
         Returns:
             FormationDocData with all fields populated.
         """
-        config = STATE_TEMPLATE_MAP[state_key]
+        config = FORM_TEMPLATE_MAP[state_key]
         state = config["state"]
         entity_type = config["entity_type"]
         template_name = config["template"]
+
+        if state == "BO":
+            return self._generate_beneficial_owners(template_name)
 
         # Principal office address (in-state)
         po_street, po_city, po_state, po_zip = self._generate_state_address(state)
@@ -246,3 +356,72 @@ class FormationDataGenerator:
             doc_id=str(uuid.UUID(int=self.rng.getrandbits(128), version=4)),
             template_name=template_name,
         )
+
+    def _generate_beneficial_owners(self, template_name: str) -> FormationDocData:
+        """Generate synthetic data for a beneficial owners form."""
+        # Person opening the account
+        opener_first, opener_mid, opener_last = self._generate_person_name()
+
+        # Legal entity info
+        ent_type = self.rng.choice(["LLC", "CORP"])
+        entity_name = self._generate_entity_name(ent_type)
+        entity_type_label = self.rng.choice([
+            "Corporation", "Limited Liability Company", "LLC", "S-Corp",
+            "General Partnership", "LP",
+        ])
+        po_street, po_city, po_state, po_zip = self._generate_state_address("BO")
+
+        # Control individual (Section 3)
+        ctrl_first, ctrl_mid, ctrl_last = self._generate_person_name()
+        ctrl_street, ctrl_city, ctrl_state, ctrl_zip = self._generate_state_address("BO")
+
+        # Randomly generate 0 to 3 owners (Section 4)
+        num_owners = self.rng.randint(0, 3)
+        pcts = self._generate_owner_pcts(num_owners)
+
+        data = FormationDocData(
+            entity_name=entity_name,
+            entity_type=ent_type,
+            state_of_formation="BO",
+            principal_office_street=po_street,
+            principal_office_city=po_city,
+            principal_office_state=po_state,
+            principal_office_zip=po_zip,
+            formation_date=self._generate_formation_date(),
+            doc_id=str(uuid.UUID(int=self.rng.getrandbits(128), version=4)),
+            template_name=template_name,
+            opener_first_name=opener_first,
+            opener_middle_name=opener_mid,
+            opener_last_name=opener_last,
+            entity_country="US",
+            control_first_name=ctrl_first,
+            control_middle_name=ctrl_mid,
+            control_last_name=ctrl_last,
+            control_dob=self._generate_dob(),
+            control_street=ctrl_street,
+            control_city=ctrl_city,
+            control_state=ctrl_state,
+            control_postal_code=ctrl_zip,
+            control_country="US",
+            control_ssn=self._generate_ssn(),
+            cert_name=f"{opener_first} {opener_mid} {opener_last}",
+            cert_date=self._generate_formation_date(),
+        )
+
+        for i in range(num_owners):
+            n = i + 1
+            first, mid, last = self._generate_person_name()
+            street, city, st, zp = self._generate_state_address("BO")
+            setattr(data, f"owner{n}_pct", pcts[i])
+            setattr(data, f"owner{n}_first_name", first)
+            setattr(data, f"owner{n}_middle_name", mid)
+            setattr(data, f"owner{n}_last_name", last)
+            setattr(data, f"owner{n}_dob", self._generate_dob())
+            setattr(data, f"owner{n}_street", street)
+            setattr(data, f"owner{n}_city", city)
+            setattr(data, f"owner{n}_state", st)
+            setattr(data, f"owner{n}_postal_code", zp)
+            setattr(data, f"owner{n}_country", "US")
+            setattr(data, f"owner{n}_ssn", self._generate_ssn())
+
+        return data

@@ -1,0 +1,535 @@
+{
+  "template": "Beneficial_Owners_596621.pdf",
+  "state": "BO",
+  "entity_type": "BENEFICIAL",
+  "fields": [
+    {
+      "field_id": "opener_first_name",
+      "page": 2,
+      "bbox": [39, 284, 255, 303],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "opener_middle_name",
+      "page": 2,
+      "bbox": [255, 284, 440, 303],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "opener_last_name",
+      "page": 2,
+      "bbox": [440, 284, 575, 303],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "entity_name",
+      "page": 2,
+      "bbox": [39, 426, 420, 443],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "entity_type",
+      "page": 2,
+      "bbox": [420, 426, 575, 443],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_street",
+      "page": 2,
+      "bbox": [39, 457, 330, 473],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_city",
+      "page": 2,
+      "bbox": [330, 457, 575, 473],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_state",
+      "page": 2,
+      "bbox": [39, 488, 230, 503],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "principal_office_zip",
+      "page": 2,
+      "bbox": [230, 488, 370, 503],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "entity_country",
+      "page": 2,
+      "bbox": [370, 488, 575, 503],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_first_name",
+      "page": 3,
+      "bbox": [39, 67, 250, 84],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_middle_name",
+      "page": 3,
+      "bbox": [250, 67, 440, 84],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_last_name",
+      "page": 3,
+      "bbox": [440, 67, 575, 84],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_dob",
+      "page": 3,
+      "bbox": [445, 97, 575, 112],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_street",
+      "page": 3,
+      "bbox": [39, 180, 330, 197],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_city",
+      "page": 3,
+      "bbox": [330, 180, 575, 197],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_state",
+      "page": 3,
+      "bbox": [39, 211, 230, 227],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_postal_code",
+      "page": 3,
+      "bbox": [230, 211, 370, 227],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_country",
+      "page": 3,
+      "bbox": [370, 211, 575, 227],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "control_ssn",
+      "page": 3,
+      "bbox": [80, 258, 235, 278],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_pct",
+      "page": 3,
+      "bbox": [490, 514, 570, 530],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_first_name",
+      "page": 3,
+      "bbox": [39, 576, 330, 593],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_middle_name",
+      "page": 3,
+      "bbox": [330, 576, 575, 593],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_last_name",
+      "page": 3,
+      "bbox": [39, 607, 330, 624],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_dob",
+      "page": 3,
+      "bbox": [330, 607, 575, 624],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_street",
+      "page": 4,
+      "bbox": [39, 82, 330, 98],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_city",
+      "page": 4,
+      "bbox": [330, 82, 575, 98],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_state",
+      "page": 4,
+      "bbox": [39, 113, 230, 128],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_postal_code",
+      "page": 4,
+      "bbox": [230, 113, 370, 128],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_country",
+      "page": 4,
+      "bbox": [370, 113, 575, 128],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner1_ssn",
+      "page": 4,
+      "bbox": [80, 148, 235, 168],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_pct",
+      "page": 4,
+      "bbox": [490, 205, 570, 220],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_first_name",
+      "page": 4,
+      "bbox": [39, 267, 330, 284],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_middle_name",
+      "page": 4,
+      "bbox": [330, 267, 575, 284],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_last_name",
+      "page": 4,
+      "bbox": [39, 297, 330, 314],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_dob",
+      "page": 4,
+      "bbox": [330, 297, 575, 314],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_street",
+      "page": 4,
+      "bbox": [39, 343, 330, 359],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_city",
+      "page": 4,
+      "bbox": [330, 343, 575, 359],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_state",
+      "page": 4,
+      "bbox": [39, 373, 230, 389],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_postal_code",
+      "page": 4,
+      "bbox": [230, 373, 370, 389],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_country",
+      "page": 4,
+      "bbox": [370, 373, 575, 389],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner2_ssn",
+      "page": 4,
+      "bbox": [80, 409, 235, 429],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_pct",
+      "page": 4,
+      "bbox": [490, 467, 570, 482],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_first_name",
+      "page": 4,
+      "bbox": [39, 529, 330, 546],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_middle_name",
+      "page": 4,
+      "bbox": [330, 529, 575, 546],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_last_name",
+      "page": 4,
+      "bbox": [39, 562, 330, 578],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_dob",
+      "page": 4,
+      "bbox": [330, 562, 575, 578],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_street",
+      "page": 4,
+      "bbox": [39, 605, 330, 621],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_city",
+      "page": 4,
+      "bbox": [330, 605, 575, 621],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_state",
+      "page": 4,
+      "bbox": [39, 636, 230, 652],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_postal_code",
+      "page": 4,
+      "bbox": [230, 636, 370, 652],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_country",
+      "page": 4,
+      "bbox": [370, 636, 575, 652],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner3_ssn",
+      "page": 5,
+      "bbox": [80, 72, 235, 92],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_pct",
+      "page": 5,
+      "bbox": [490, 131, 570, 145],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_first_name",
+      "page": 5,
+      "bbox": [39, 192, 330, 208],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_middle_name",
+      "page": 5,
+      "bbox": [330, 192, 575, 208],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_last_name",
+      "page": 5,
+      "bbox": [39, 223, 330, 239],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_dob",
+      "page": 5,
+      "bbox": [330, 223, 575, 239],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_street",
+      "page": 5,
+      "bbox": [39, 268, 330, 284],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_city",
+      "page": 5,
+      "bbox": [330, 268, 575, 284],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_state",
+      "page": 5,
+      "bbox": [39, 299, 230, 314],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_postal_code",
+      "page": 5,
+      "bbox": [230, 299, 370, 314],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_country",
+      "page": 5,
+      "bbox": [370, 299, 575, 314],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "owner4_ssn",
+      "page": 5,
+      "bbox": [80, 334, 235, 354],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "cert_name",
+      "page": 5,
+      "bbox": [37, 436, 440, 456],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    },
+    {
+      "field_id": "cert_date",
+      "page": 5,
+      "bbox": [444, 545, 575, 565],
+      "font_size": 9,
+      "font_family": "variable",
+      "multiline": false
+    }
+  ]
+}
