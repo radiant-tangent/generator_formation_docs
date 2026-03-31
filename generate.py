@@ -96,7 +96,7 @@ def main():
             return 1
 
     # Set up paths
-    templates_dir = os.path.join(PROJECT_ROOT, "templates", args.template_set)
+    templates_dir = os.path.join(PROJECT_ROOT, "templates", "formation_docs", args.template_set)
     field_maps_dir = os.path.join(PROJECT_ROOT, "field_maps", "formation_docs", args.template_set)
     fonts_dir = os.path.join(PROJECT_ROOT, "fonts")
     pdfs_dir = os.path.join(args.output_dir, "pdfs")

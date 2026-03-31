@@ -94,7 +94,7 @@ python generate.py --count 100 --seed 123
 Use the inspector to view PDF templates with a coordinate grid overlay:
 
 ```bash
-python tools/inspect_template.py templates/ma_corp_articles.pdf --text-blocks
+python tools/inspect_template.py templates/formation_docs/no_fluff/ma_corp_articles.pdf --text-blocks
 ```
 
 ### Validate Output
@@ -109,8 +109,14 @@ python tools/validate_dataset.py ./output
 
 ```text
 formation_doc_generator/
-├── templates/            # Real blank PDF templates from state agencies
-├── field_maps/           # Per-template field coordinate configs (JSON)
+├── templates/
+│   └── formation_docs/
+│       ├── no_fluff/     # Formation pages only (cover sheets removed)
+│       └── full/         # Full templates with instructions/cover pages
+├── field_maps/
+│   └── formation_docs/
+│       ├── no_fluff/     # Field coordinates for no_fluff templates
+│       └── full/         # Field coordinates for full templates
 ├── fonts/                # TTF font files for text injection
 ├── output/
 │   ├── pdfs/             # Base filled PDFs + augmented PDFs per profile
@@ -134,14 +140,14 @@ formation_doc_generator/
 ## Adding a New State Template
 
 1. Download the blank PDF form from the states filing agency website
-2. Place it in `templates/` with the naming convention `{state}_{entity_type}_{doctype}.pdf`
+2. Place it in `templates/formation_docs/no_fluff/` (and optionally `templates/formation_docs/full/`) with the naming convention `{state}_{entity_type}_{doctype}.pdf`
 3. Run the inspector to identify field positions:
 
    ```bash
-   python tools/inspect_template.py templates/your_template.pdf --text-blocks
+   python tools/inspect_template.py templates/formation_docs/no_fluff/your_template.pdf --text-blocks
    ```
 
-4. Create a field map JSON in `field_maps/` matching the template name:
+4. Create a field map JSON in `field_maps/formation_docs/no_fluff/` (and `full/`) matching the template name:
 
    ```json
    {
@@ -162,7 +168,7 @@ formation_doc_generator/
    ```
 
 5. Add the state to `STATE_CONFIG` and `STATE_TEMPLATE_MAP` in `generator/faker_data.py`
-6. Run a test generation: `python generate.py --count 1 --states XX`
+6. Run a test generation: `python generate.py --count 1 --states XX_CORP`
 
 ## Updating Field Coordinate Maps
 
